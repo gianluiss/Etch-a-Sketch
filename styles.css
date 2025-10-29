@@ -1,0 +1,61 @@
+body {
+    background-color: #242435;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 90px 0px 50px;
+    color: #cda9f8;
+    /*border-bottom: 2px solid white;*/
+
+
+    max-width: 1900px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+header h1 {
+    font-family: monospace;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+header nav {
+    display: flex;
+    gap: 30px;
+    /*border: 2px solid black;*/
+}
+
+nav button {
+    background-color: transparent;
+    color: pink;
+    font-family: monospace;
+    font-size: 20px;
+    border: none;
+}
+
+.header-line {
+    display: flex;
+    height: 2px;
+    background: grey;
+}
+
+#sketch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1900px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+#sketch #box {
+    border: 2px solid #f5e0dc;
+    background-color: #f2cdcd;
+    padding: 100px;
+}
