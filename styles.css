@@ -72,19 +72,28 @@ nav button {
     width: 500px;
     height: 500px;
     margin: 20px auto;
-    border: 5px solid blue;
+    /*border: 5px solid #b689ee;*/
+    border: 5px solid #9159d6;
 }
 
-#sketch-container #row {
+#sketch-container .row {
     flex: 1;
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+    /*border: 10px solid green;*/
 }
 
-#sketch-container #box {
+#sketch-container .box {
     /*border: 2px solid #f5e0dc;*/
-    border: 3px solid red;
-    background-color: #f2cdcd;
+    /*border: 2px solid rgb(177, 65, 167);*/
+
+    border: 2px solid #9159d6;
+    background-color: #b689ee;
+    /*
+    border: 2px solid #b689ee;
+    background-color: #cda9f8;
+    */
     width: 100%;
 }
