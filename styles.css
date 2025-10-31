@@ -45,11 +45,55 @@ nav button {
     cursor: pointer;
 }
 
+#git-link {
+    color: pink;
+    font-family: monospace;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .header-line {
     display: flex;
     width: 100%;
     background: rgb(151, 128, 150);
     padding: 1px;
+}
+
+#canvas-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#left-menu {
+    width: 600px;
+}
+#right-menu {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    
+    width: 600px;
+    height: 600px;
+}
+
+#grid-size-form {
+    color: pink;
+    font-size: 30px;
+    font-family: monospace;
+    margin-left: 20px;
+}
+
+#grid-size-input {
+    color: #cda9f8;
+    font-size: 30px;
+    font-family: monospace;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid pink;
+    width: 150px;
 }
 
 #sketch-container {
@@ -120,8 +164,7 @@ nav button {
     gap: 4px;
 
     font-family: monospace;
-    font-size: 20px;
-    margin-right: 10px;
+    font-size: 25px;
 }
 
 #grid {
@@ -159,7 +202,7 @@ nav button {
 
 #fill-div {
     color: pink;
-    font-size: 20px;
+    font-size: 25px;
     font-family: monospace;
     font-weight: bold;
     display: flex;
@@ -167,5 +210,4 @@ nav button {
     align-items: center;
     cursor: pointer;
 }
-
 /*END OF color-div stuff*/

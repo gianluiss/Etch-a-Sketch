@@ -1,6 +1,8 @@
 const sContainer = document.querySelector("#sketch-container");
 
 const gridSize = Number(prompt("Enter grid size", 0));
+//const gridSize = 9;
+
 const grid = [];
 let color = "transparent"; //color option
 
@@ -23,12 +25,6 @@ for(let i = 0; i < gridSize; i++) {
     grid.addRow(gridSize);
 }
 
-function changeBoxColor(event, color) {
-    //console.log(event.target);
-    let box = event.target;
-    box.style.backgroundColor = color;
-}
-
 //console.log(grid);
 function addGrid(grid) {
     grid.forEach(row => {
@@ -44,7 +40,6 @@ function addGrid(grid) {
                 boxDiv.style.backgroundColor = color;
             })
 
-            //boxDiv.addEventListener('mouseenter', (event) => changeBoxColor(event, "pink"));
             let holding = false;
             sContainer.addEventListener('mousedown', (event) => {
                 event.preventDefault();
@@ -219,3 +214,26 @@ fillBackground();
 gridModesSelection();
 addColors(colors);
 addGrid(grid);
+
+
+/*
+WILL ADD SOON JUST NEED TO FIX THE ADD GRID PART INTO A SINGLE FUNC
+
+const gridForm = document.querySelector("#grid-size-form");
+
+gridForm.addEventListener("click", event => {
+    event.preventDefault();
+
+    let target = event.target;
+    if(target.id === "grid-size-input")  {
+        document.querySelector("#grid-size-input").value = "";
+    }
+    //console.log(event.target.id);
+});
+
+gridForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const gridSize = Number(document.querySelector("#grid-size-input").value);
+    //console.log("Grid size submitted:", gridSize);
+});
+*/
