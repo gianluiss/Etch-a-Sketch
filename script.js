@@ -3,6 +3,8 @@ const sContainer = document.querySelector("#sketch-container");
 const gridSize = Number(prompt("Enter grid size", 0));
 const grid = [];
 
+/* SCONTAINER SECTION */
+
 grid.addRow = function(numberOfBoxes) {
     let row = { 
         rowTag: "div",
@@ -78,28 +80,80 @@ function addGrid(grid) {
         })
         sContainer.appendChild(rowDiv);
     });
-
-
-    /*
-    grid.forEach(row => {
-        let rowDiv = document.createElement(row.rowTag);
-        
-        //add the css properties
-        rowDiv.classList.add(row.rowClass);
-        //append boxes to row
-        row.boxes.forEach(box => {
-            let boxDiv = document.createElement(box.boxTag);
-            boxDiv.classList.add(box.boxClass);
-
-
-            rowDiv.appendChild(boxDiv);
-        })
-        //append row to sContainer
-        sContainer.appendChild(rowDiv);
-    });
-    */
-
-    
 }
 
+/*END OF SCONTAINER SECTION*/
+
+/* COLOR-DIV SECTION */
+const colorDiv = document.querySelector("#color-div");
+const colorRowOne = document.querySelector("#color-row-one");
+const colorRowTwo = document.querySelector("#color-row-two");
+const rowSize = 12;
+
+
+//note: colors.length should always be even not odd.
+const colors = [
+    //from light to dark (except specials)
+
+    //red family
+    "#FFC0CB", "#FF0000", "#800000",
+    //blue family
+    "#87CEEB", "#0000FF", "#000080",
+    //yellow family
+    "#FFFACD", "#FFFF00", "#808000",
+    //orange family
+    "#FFDAB9", "#FFA500", "#CC5500",
+    //green family
+    "#98FF98", "#008000", "#228B22",
+    //purple family
+    "#E6E6FA", "#800080", "#4B0082",
+    //essentials or specials
+    "#9159d6", "#b689ee", "brown",
+    "white", "grey", "black",
+]
+
+/*
+for(let child of colorRowOne.children) {
+    console.log(child);
+}
+*/
+
+//setup colors
+/*
+for(let i = 0; i < ; i++) {
+    console.log( colorRowOne.children[i] );
+}
+*/
+
+function addColors(colors) {
+    let rowOne = colorRowOne;
+    let rowTwo = colorRowTwo;
+
+    const rowOneStart = 0;
+    const rowTwoStart = colors.length/2;
+
+    const rowLengthOne = colors.length/2; //note: might have errors if colors.length is odd since it should only be int
+    const rowLengthTwo = colors.length;
+
+    //console.log("Row one:");
+    for(let i = rowOneStart; i < rowLengthOne; i++) {
+        rowOne.children[i].id = colors[i];
+        rowOne.children[i].style.backgroundColor = colors[i];
+        console.log(`${rowOne.children[i].id} : ${i}`);
+    }
+
+    //console.log("Row two:")
+    for(let i = 0; i < rowLengthOne; i++) {
+        rowTwo.children[i].id = colors[i + colors.lenght/2];
+        rowTwo.children[i].style.backgroundColor = colors[i + colors.length/2];
+        //console.log(`${rowOne.children[i].id} : ${i}`);
+    }
+}
+
+console.log(colors.length/2);
+
+addColors(colors);
+/* END OF COLOR-DIV SECTION */
+
+//main
 addGrid(grid);
