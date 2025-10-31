@@ -2,7 +2,7 @@ const sContainer = document.querySelector("#sketch-container");
 
 const gridSize = Number(prompt("Enter grid size", 0));
 const grid = [];
-let color = ""; //color option
+let color = "transparent"; //color option
 
 /* SCONTAINER SECTION */
 
@@ -105,8 +105,8 @@ const colors = [
     //purple family
     "#ba4bc9ff", "#800080", "#4B0082",
     //essentials or specials
-    "#9159d6", "#b689ee", "brown",
-    "white", "grey", "black",
+    "#b689ee", "brown", "white", 
+    "grey", "black", "transparent",
 ]
 const rowLength = colors.length/2;  //note: might have errors if colors.length is odd since it should only be int
 
@@ -136,8 +136,9 @@ function addColors(colors) {
         if(!target.classList.contains("color-option"))
             return;
 
-        console.log(target.classList.contains("color-option"));
+        //console.log(target.classList.contains("color-option"));
         color = target.id;
+        updateCurrentColor();
     });
 
     rowTwo.addEventListener('click', event => {
@@ -145,10 +146,10 @@ function addColors(colors) {
         if(!target.classList.contains("color-option"))
             return;
 
-        console.log(target.classList.contains("color-option"));
+        //console.log(target.classList.contains("color-option"));
         color = target.id;
+        updateCurrentColor();
     });
-
 }
 //addColors(colors);
 
@@ -158,7 +159,7 @@ function gridModesSelection() {
     gridModes.addEventListener('click', event => {
         const boxBorders = document.querySelectorAll("#sketch-container .box"); //boxes have borders so it acts like a grid
         let target = event.target;
-        //console.log(target.id);
+
         if(target.id != "grid" && target.id != "gridless")
             return;
 
@@ -181,13 +182,40 @@ function gridModesSelection() {
             target.style.color = "lightcoral";
             target.style.fontWeight = "bold";
         }
-
-        console.log(target.id);
+        //console.log(target.id);
     })
 }
+
+const currentColorBox = document.querySelector("#current-color-box");
+function updateCurrentColor() {
+    currentColorBox.style.backgroundColor = color;
+}
+
+const fillDiv = document.querySelector("#fill-div");
+function fillBackground() {
+    fillDiv.addEventListener('click', event => {
+        const boxes = document.querySelectorAll("#sketch-container .box");
+        boxes.forEach(box => {
+            box.style.backgroundColor = color;
+        });
+    });
+}
+
+const resetButton = document.querySelector("#reset");
+function resetGrid() {
+    resetButton.addEventListener('click', event => {
+        const boxes = document.querySelectorAll("#sketch-container .box");
+        boxes.forEach(box => {
+            box.style.backgroundColor = "white";
+        });
+    });
+}
+
 /* END OF COLOR-DIV SECTION */
 
 //main
+resetGrid();
+fillBackground();
 gridModesSelection();
 addColors(colors);
 addGrid(grid);

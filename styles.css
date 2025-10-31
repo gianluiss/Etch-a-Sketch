@@ -52,26 +52,6 @@ nav button {
     padding: 1px;
 }
 
-/*
-#sketch-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    //
-    max-width: 1900px;
-    width: 100%;
-    //
-
-    width: fit-content;
-    margin: 20px auto;
-    
-
-    border: 5px solid blue;
-}
-*/
-
 #sketch-container {
     display: flex;
     flex-direction: column;
@@ -97,7 +77,9 @@ nav button {
     /*border: 2px solid rgb(177, 65, 167);*/
 
     border: 1px solid #9159d6;
-    background-color: #b689ee;
+    /*background-color: #b689ee;*/
+    background-color: white;
+
     /*
     border: 2px solid #b689ee;
     background-color: #cda9f8;
@@ -107,13 +89,13 @@ nav button {
 
 /*color-div STUFF*/
 #color-div {
-    border: 1px solid #b689ee;
+    /*border: 1px solid #b689ee;*/
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     max-width: 1900px;
-
+    gap: 30px;
 }
 
 .color-row {
@@ -152,6 +134,37 @@ nav button {
 #gridless {
     color: pink;
     box-sizing: border-box;
+    cursor: pointer;
+}
+
+#current-color-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: pink;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+#current-color-box {
+    border: 3px solid #9159d6;
+    padding: 10px;
+    margin: 5px;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+#fill-div {
+    color: pink;
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
