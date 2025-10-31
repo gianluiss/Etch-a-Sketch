@@ -20,8 +20,13 @@ for(let i = 0; i < gridSize; i++) {
     grid.addRow(gridSize);
 }
 
-console.log(grid);
+function changeBoxColor(event, color) {
+    //console.log(event.target);
+    let box = event.target;
+    box.style.backgroundColor = color;
+}
 
+//console.log(grid);
 function addGrid(grid) {
     grid.forEach(row => {
         let rowDiv = document.createElement(row.rowTag);
@@ -30,6 +35,44 @@ function addGrid(grid) {
         row.boxes.forEach(box => {
             let boxDiv = document.createElement(box.boxTag);
             boxDiv.classList.add(box.boxClass);
+
+            //mouse event handling for box
+            boxDiv.addEventListener('click', event => {
+                boxDiv.style.backgroundColor = "pink";
+            })
+
+            //boxDiv.addEventListener('mouseenter', (event) => changeBoxColor(event, "pink"));
+            let holding = false;
+            sContainer.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                holding = true;
+                //console.log(`Holding | ${event.type} | ${holding}`);
+            });
+
+            sContainer.addEventListener('mouseup', (event) => {
+                holding = false;
+                //console.log(`Holding | ${event.type} | ${holding}`);
+            });
+
+            let lastTime = 0;
+            const throttleDelay = 50;
+            boxDiv.addEventListener('mousemove', (event) => {
+                if(!holding) 
+                    return;
+                if(!event.target.classList.contains('box'))
+                    return;
+
+                let now = Date.now();
+                if(now - lastTime < throttleDelay)
+                    return;
+                lastTime = now;
+
+                //console.log(event.target);
+                if(event.target.style.backgroundColor == "pink")
+                    return;
+                let box = event.target;
+                box.style.backgroundColor = "pink";
+            })
 
             rowDiv.appendChild(boxDiv);
         })
@@ -56,6 +99,7 @@ function addGrid(grid) {
     });
     */
 
+    
 }
 
 addGrid(grid);
