@@ -2,6 +2,7 @@ const sContainer = document.querySelector("#sketch-container");
 
 const gridSize = Number(prompt("Enter grid size", 0));
 const grid = [];
+let color = ""; //color option
 
 /* SCONTAINER SECTION */
 
@@ -40,7 +41,7 @@ function addGrid(grid) {
 
             //mouse event handling for box
             boxDiv.addEventListener('click', event => {
-                boxDiv.style.backgroundColor = "pink";
+                boxDiv.style.backgroundColor = color;
             })
 
             //boxDiv.addEventListener('mouseenter', (event) => changeBoxColor(event, "pink"));
@@ -70,10 +71,10 @@ function addGrid(grid) {
                 lastTime = now;
 
                 //console.log(event.target);
-                if(event.target.style.backgroundColor == "pink")
+                if(event.target.style.backgroundColor == color)
                     return;
                 let box = event.target;
-                box.style.backgroundColor = "pink";
+                box.style.backgroundColor = color;
             })
 
             rowDiv.appendChild(boxDiv);
@@ -88,13 +89,9 @@ function addGrid(grid) {
 const colorDiv = document.querySelector("#color-div");
 const colorRowOne = document.querySelector("#color-row-one");
 const colorRowTwo = document.querySelector("#color-row-two");
-const rowSize = 12;
 
-
-//note: colors.length should always be even not odd.
 const colors = [
     //from light to dark (except specials)
-
     //red family
     "#FFC0CB", "#FF0000", "#800000",
     //blue family
@@ -111,47 +108,45 @@ const colors = [
     "#9159d6", "#b689ee", "brown",
     "white", "grey", "black",
 ]
-
-/*
-for(let child of colorRowOne.children) {
-    console.log(child);
-}
-*/
-
-//setup colors
-/*
-for(let i = 0; i < ; i++) {
-    console.log( colorRowOne.children[i] );
-}
-*/
+const rowLength = colors.length/2;  //note: might have errors if colors.length is odd since it should only be int
 
 function addColors(colors) {
     let rowOne = colorRowOne;
     let rowTwo = colorRowTwo;
 
-    const rowOneStart = 0;
-    const rowTwoStart = colors.length/2;
-
-    const rowLengthOne = colors.length/2; //note: might have errors if colors.length is odd since it should only be int
-    const rowLengthTwo = colors.length;
-
+    //note: might have errors if colors.length is odd since it should only be int
     //console.log("Row one:");
-    for(let i = rowOneStart; i < rowLengthOne; i++) {
+    for(let i = 0; i < rowLength; i++) {
         rowOne.children[i].id = colors[i];
         rowOne.children[i].style.backgroundColor = colors[i];
-        console.log(`${rowOne.children[i].id} : ${i}`);
+        //console.log(`${rowOne.children[i].id} : ${i}`);
     }
 
     //console.log("Row two:")
-    for(let i = 0; i < rowLengthOne; i++) {
-        rowTwo.children[i].id = colors[i + colors.lenght/2];
+    for(let i = 0; i < rowLength; i++) {
+        rowTwo.children[i].id = colors[i + colors.length/2];
         rowTwo.children[i].style.backgroundColor = colors[i + colors.length/2];
         //console.log(`${rowOne.children[i].id} : ${i}`);
     }
+
+    rowOne.addEventListener('click', event => {
+        let target = event.target;
+        if(!target.classList.contains("color-option"))
+            return;
+
+        console.log(target.classList.contains("color-option"));
+        color = target.id;
+    });
+
+    rowTwo.addEventListener('click', event => {
+        let target = event.target;
+        if(!target.classList.contains("color-option"))
+            return;
+
+        console.log(target.classList.contains("color-option"));
+        color = target.id;
+    });
 }
-
-console.log(colors.length/2);
-
 addColors(colors);
 /* END OF COLOR-DIV SECTION */
 

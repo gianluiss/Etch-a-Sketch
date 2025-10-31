@@ -35,7 +35,7 @@ nav button {
     background-color: transparent;
     color: pink;
     font-family: monospace;
-    font-size: 20px;
+    font-size: 30px;
     border: none;
 }
 
@@ -71,7 +71,7 @@ nav button {
     justify-content: center;
     width: 700px;
     height: 700px;
-    margin: 20px auto;
+    margin: 15px auto;
     /*border: 5px solid #b689ee;*/
     border: 5px solid #9159d6;
 }
@@ -113,7 +113,7 @@ nav button {
 
 .color-option {
     border: 3px solid #9159d6;
-    padding: 40px;
+    padding: 18px;
     margin: 5px;
     background-color: transparent;
 }
