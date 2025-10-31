@@ -97,13 +97,13 @@ const colors = [
     //blue family
     "#87CEEB", "#0000FF", "#000080",
     //yellow family
-    "#FFFACD", "#FFFF00", "#808000",
+    "#ffef60ff", "#ffff00ff", "#c2c200ff",
     //orange family
     "#FFDAB9", "#FFA500", "#CC5500",
     //green family
     "#98FF98", "#008000", "#228B22",
     //purple family
-    "#E6E6FA", "#800080", "#4B0082",
+    "#ba4bc9ff", "#800080", "#4B0082",
     //essentials or specials
     "#9159d6", "#b689ee", "brown",
     "white", "grey", "black",
@@ -119,6 +119,7 @@ function addColors(colors) {
     for(let i = 0; i < rowLength; i++) {
         rowOne.children[i].id = colors[i];
         rowOne.children[i].style.backgroundColor = colors[i];
+        rowOne.children[i].style.cursor = "pointer";
         //console.log(`${rowOne.children[i].id} : ${i}`);
     }
 
@@ -126,6 +127,7 @@ function addColors(colors) {
     for(let i = 0; i < rowLength; i++) {
         rowTwo.children[i].id = colors[i + colors.length/2];
         rowTwo.children[i].style.backgroundColor = colors[i + colors.length/2];
+        rowTwo.children[i].style.cursor = "pointer";
         //console.log(`${rowOne.children[i].id} : ${i}`);
     }
 
@@ -146,9 +148,46 @@ function addColors(colors) {
         console.log(target.classList.contains("color-option"));
         color = target.id;
     });
+
 }
-addColors(colors);
+//addColors(colors);
+
+const gridModes = document.querySelector("#grid-modes");
+
+function gridModesSelection() {
+    gridModes.addEventListener('click', event => {
+        const boxBorders = document.querySelectorAll("#sketch-container .box"); //boxes have borders so it acts like a grid
+        let target = event.target;
+        //console.log(target.id);
+        if(target.id != "grid" && target.id != "gridless")
+            return;
+
+        if(target.id == "gridless") {
+            boxBorders.forEach(box => { box.style.border = "none"; });
+
+            const grid = document.querySelector("#grid");
+            grid.style.color = "pink";
+            grid.style.fontWeight = "normal";
+            target.style.color = "lightcoral";
+            target.style.fontWeight = "bold";
+        }
+
+        if(target.id == "grid") {
+            boxBorders.forEach(box => { box.style.border = "1px solid #9159d6"; });
+
+            const gridless = document.querySelector("#gridless");
+            gridless.style.color = "pink";
+            gridless.style.fontWeight = "normal";
+            target.style.color = "lightcoral";
+            target.style.fontWeight = "bold";
+        }
+
+        console.log(target.id);
+    })
+}
 /* END OF COLOR-DIV SECTION */
 
 //main
+gridModesSelection();
+addColors(colors);
 addGrid(grid);
